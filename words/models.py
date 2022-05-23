@@ -11,9 +11,6 @@ class TopicWord(models.Model):
     def __str__(self) -> str:
         return self.name
 
-    def get_absolute_url(self):
-        return reverse('topic_detail', kwargs={"slug": self.name})
-
     class Meta:
         verbose_name = 'Тематика'
         verbose_name_plural = 'Тематики'
@@ -29,9 +26,6 @@ class Word(models.Model):
 
     def __str__(self):
         return self.word
-
-    def get_absolute_url(self):
-        return reverse('phrase_detail', kwargs={"slug": self.text})
 
     class Meta:
         verbose_name = "Слово"

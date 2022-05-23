@@ -14,15 +14,13 @@ class WordListSerializer(serializers.ModelSerializer):
     '''Список слов'''
     class Meta:
         model = Word
-        fields = ("id", "word", "transcription", "translation", "topic",)
+        fields = '__all__'
 
 
-# class WordDetailSerializer(serializers.ModelSerializer):
-#     '''Слово'''
+class WordDetailSerializer(serializers.ModelSerializer):
+    '''Слово'''
+    topic = serializers.SlugRelatedField(slug_field="name", read_only=True)
 
-#     topic = serializers.SlugRelatedField(
-#         slug_field='name', read_only=True)
-
-#     class Meta:
-#         model = Word
-#         exclude = ("draft",)
+    class Meta:
+        model = Word
+        exclude = ("draft",)

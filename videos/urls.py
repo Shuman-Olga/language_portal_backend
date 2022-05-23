@@ -1,9 +1,11 @@
 from django.urls import path
+from rest_framework.urlpatterns import format_suffix_patterns
+
 from . import views
 
 
-urlpatterns = [
-    path("video/", views.VideoListView.as_view()),
+urlpatterns = format_suffix_patterns([
+    path("video/", views.VideoViewSet.as_view({'get': 'list'})),
+    path("video/<int:pk>", views.VideoViewSet.as_view({'get': 'retrieve'})),
     path("topicvideo/", views.TopicVideoListView.as_view()),
-    path("video/<int:pk>", views.VideoDetailView.as_view()),
-]
+])

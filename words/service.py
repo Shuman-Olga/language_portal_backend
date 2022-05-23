@@ -13,4 +13,4 @@ class WordFilter(filters.FilterSet):
 
     class Meta:
         model = Word
-        fields = ['topic', 'word', ]
+        fields = ['id', 'topic', 'word', ]
